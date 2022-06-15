@@ -4,18 +4,16 @@
  * @param {number} startNumber - Начало диапазона
  * @param {number} finishNumber - Конец диапазона
  *
- * @return {number|string} Случайное число из заданного диапазона | Текст ошибки
+ * @return {number} Случайное число из заданного диапазона
  */
 function getRandomNumber(startNumber, finishNumber) {
-  if (typeof startNumber !== 'number' || typeof finishNumber !== 'number') {
-    return 'Некорректный тип аргумента';
+  const roundedStartNumber = Math.ceil(startNumber);
+  const roundedFinishNumber = Math.floor(finishNumber);
+  let randomNumber = Math.round(Math.random() * (roundedFinishNumber - roundedStartNumber) + roundedStartNumber);
+  if (typeof startNumber !== 'number' || typeof finishNumber !== 'number' || startNumber < 0 || finishNumber < 0 || roundedStartNumber > roundedFinishNumber) {
+    randomNumber = 0;
   }
-  startNumber = Math.ceil(startNumber);
-  finishNumber = Math.floor(finishNumber);
-  if (startNumber < 0 || finishNumber < 0 || startNumber > finishNumber) {
-    return 'Некорректный диапазон';
-  }
-  return Math.round(Math.random() * (finishNumber - startNumber) + startNumber);
+  return randomNumber;
 }
 
 /**
@@ -24,11 +22,11 @@ function getRandomNumber(startNumber, finishNumber) {
  * @param {string} text - Проверяемая строка
  * @param {number} maxLength - Максимальная длина
  *
- * @return {bool|string} true, если длина строки не больше максимальной, false в противном случае | Текст ошибки
+ * @return {bool} true, если длина строки не больше максимальной, false в противном случае
  */
 function checkLength(text, maxLength) {
   if (typeof text !== 'string' || typeof maxLength !== 'number') {
-    return 'Некорректный тип аргумента';
+    return false;
   }
   return text.length <= maxLength;
 }
