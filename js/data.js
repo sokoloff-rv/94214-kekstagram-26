@@ -5,9 +5,6 @@ import {
 // Блок 4, задание 1
 // Я так понимаю, что весь написанный далее код является временным, поэтому функции не документирую.
 
-// создаю пустой массив, в который будут записываться данные
-const photosData = [];
-
 // создаю массив с описаниями для фотографий, их просили придумать
 const photosDescriptions = [
   'Пляж',
@@ -117,6 +114,7 @@ function getComments(quantity) {
 
 // наконец, функция, которая генерирует все необходимые данные для фотографий
 function generatePhotosData() {
+  const photosData = [];
   for (let i = 0; i < 25; i++) {
     photosData[i] = {
       id: i + 1,
@@ -126,9 +124,9 @@ function generatePhotosData() {
       comments: getComments(getRandomNumber(1, 3))
     };
   }
+  return photosData;
 }
-generatePhotosData();
 
 export {
-  photosData
+  generatePhotosData
 };
