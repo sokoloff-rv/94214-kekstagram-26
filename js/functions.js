@@ -6,7 +6,7 @@
  *
  * @return {number} Случайное число из заданного диапазона
  */
-function getRandomNumber(startNumber, finishNumber) {
+const getRandomNumber = (startNumber, finishNumber) => {
   const roundedStartNumber = Math.ceil(startNumber);
   const roundedFinishNumber = Math.floor(finishNumber);
   let randomNumber = Math.round(Math.random() * (roundedFinishNumber - roundedStartNumber) + roundedStartNumber);
@@ -14,7 +14,7 @@ function getRandomNumber(startNumber, finishNumber) {
     randomNumber = 0;
   }
   return randomNumber;
-}
+};
 
 /**
  * Проверяет строку на соответствие максимальной длине
@@ -24,12 +24,12 @@ function getRandomNumber(startNumber, finishNumber) {
  *
  * @return {bool} true, если длина строки не больше максимальной, false в противном случае
  */
-function checkLength(text, maxLength) {
+const checkLength = (text, maxLength) => {
   if (typeof text !== 'string' || typeof maxLength !== 'number') {
     return false;
   }
   return text.length <= maxLength;
-}
+};
 
 export {
   getRandomNumber,

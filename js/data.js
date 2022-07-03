@@ -2,10 +2,6 @@ import {
   getRandomNumber
 } from './functions.js';
 
-// Блок 4, задание 1
-// Я так понимаю, что весь написанный далее код является временным, поэтому функции не документирую.
-
-// создаю массив с описаниями для фотографий, их просили придумать
 const photosDescriptions = [
   'Пляж',
   'Указатель на пляж',
@@ -34,7 +30,6 @@ const photosDescriptions = [
   'Шок-контент, бегемот хочет съесть туристов вместе с машиной'
 ];
 
-// создаю массив с предложениями, из которых может состоять комментарий
 const commentsMessages = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -44,7 +39,6 @@ const commentsMessages = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-// создаю массив с именами авторов комментариев
 const commentsAuthorsNames = [
   'Петя',
   'Вася',
@@ -68,11 +62,9 @@ const commentsAuthorsNames = [
   'Малонемножков Константин Вениаминович'
 ];
 
-// создаю массив, в который будут записываться использованные id комментариев, чтобы избежать повторений
 const idForComments = [];
 
-// функция, которая генерирует неповторяющиеся id для комментариев
-function createIdForComments() {
+const createIdForComments = () => {
   const idForCommentsLength = idForComments.length;
   let id;
   while (idForComments.length === idForCommentsLength) {
@@ -83,10 +75,9 @@ function createIdForComments() {
     idForComments.push(id);
   }
   return id;
-}
+};
 
-// функция, которая составляет текст комментария из заданных заранее предложений
-function getCommentMessage(quantity) {
+const getCommentMessage = (quantity) => {
   let commentMessage = '';
   const tempCommentsMessages = commentsMessages.slice(0); // создаю копию массива с предложениями, так как в цикле буду удалять из неё использованные предложения во избежание дублирования
   for (let i = 0; i < quantity; i++) {
@@ -96,10 +87,9 @@ function getCommentMessage(quantity) {
     commentMessage += ' ';
   }
   return commentMessage;
-}
+};
 
-// функция, которая генерирует комментарии, согласно условиям
-function getComments(quantity) {
+const getComments = (quantity) => {
   const comments = [];
   for (let i = 0; i < quantity; i++) {
     comments[i] = {
@@ -110,10 +100,9 @@ function getComments(quantity) {
     };
   }
   return comments;
-}
+};
 
-// наконец, функция, которая генерирует все необходимые данные для фотографий
-function generatePhotosData() {
+const generatePhotosData = () => {
   const photosData = [];
   for (let i = 0; i < 25; i++) {
     photosData[i] = {
@@ -125,7 +114,7 @@ function generatePhotosData() {
     };
   }
   return photosData;
-}
+};
 
 export {
   generatePhotosData
