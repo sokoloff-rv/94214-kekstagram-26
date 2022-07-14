@@ -11,9 +11,10 @@ import {
 const pictures = generatePhotosData();
 generateThumbs(pictures);
 
-const picturesItems = document.querySelectorAll('.picture');
-for (const pictureItem of picturesItems) {
-  const pictureId = pictureItem.querySelector('.picture__img').dataset.id;
+const picturesContainer = document.querySelector('.pictures');
+picturesContainer.addEventListener('click', (event) => {
+  event.preventDefault();
+  const pictureId = event.target.dataset.id;
   const pictureData = pictures.find((picture) => picture.id === Number(pictureId));
-  pictureItem.addEventListener('click', getGallery(pictureData));
-}
+  getGallery(pictureData);
+});

@@ -8,9 +8,7 @@ const bigPictureCommentsLoader = document.querySelector('.big-picture .comments-
 const bigPictureDescription = document.querySelector('.big-picture .social__caption');
 const bigPictureClose = document.querySelector('.big-picture__cancel');
 
-const getGallery = (pictureData) => (event) => {
-  event.preventDefault();
-
+const getGallery = (pictureData) => {
   bigPicture.classList.remove('hidden');
   bigPictureImage.src = pictureData.url;
   bigPictureLikes.textContent = pictureData.likes;
