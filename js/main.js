@@ -13,8 +13,10 @@ generateThumbs(pictures);
 
 const picturesContainer = document.querySelector('.pictures');
 picturesContainer.addEventListener('click', (event) => {
-  event.preventDefault();
-  const pictureId = event.target.dataset.id;
-  const pictureData = pictures.find((picture) => picture.id === Number(pictureId));
-  getGallery(pictureData);
+  if (event.target.matches('.picture__img')) {
+    event.preventDefault();
+    const pictureId = event.target.dataset.id;
+    const pictureData = pictures.find((picture) => picture.id === Number(pictureId));
+    getGallery(pictureData);
+  }
 });
