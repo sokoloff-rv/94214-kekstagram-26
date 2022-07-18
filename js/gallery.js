@@ -8,9 +8,7 @@ const bigPictureCommentsLoader = document.querySelector('.big-picture .comments-
 const bigPictureDescription = document.querySelector('.big-picture .social__caption');
 const bigPictureClose = document.querySelector('.big-picture__cancel');
 
-const getGallery = (pictureData) => (event) => {
-  event.preventDefault();
-
+const openBigPicture = (pictureData) => {
   bigPicture.classList.remove('hidden');
   bigPictureImage.src = pictureData.url;
   bigPictureLikes.textContent = pictureData.likes;
@@ -41,22 +39,26 @@ const getGallery = (pictureData) => (event) => {
   bigPictureCommentsCount.classList.add('hidden');
   bigPictureCommentsLoader.classList.add('hidden');
   body.classList.add('modal-open');
-};
 
-const closeBigPicture = () => {
-  bigPicture.classList.add('hidden');
-  body.classList.remove('modal-open');
-};
+  document.addEventListener('keydown', onPopupEscKeydown);
 
-bigPictureClose.addEventListener('click', () => {
-  closeBigPicture();
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
+  const closeBigPicture = () => {
+    bigPicture.classList.add('hidden');
+    body.classList.remove('modal-open');
+    document.removeEventListener('keydown', onPopupEscKeydown);
+  };
+
+  bigPictureClose.addEventListener('click', () => {
     closeBigPicture();
+  });
+
+  function onPopupEscKeydown(event) {
+    if (event.key === 'Escape') {
+      closeBigPicture();
+    }
   }
-});
+};
 
 export {
-  getGallery
+  openBigPicture
 };

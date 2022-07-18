@@ -5,15 +5,27 @@ import {
   generateThumbs
 } from './thumbs.js';
 import {
-  getGallery
+  openBigPicture
 } from './gallery.js';
+import {
+  openUploadForm
+} from './upload-form.js';
+import './upload-form-validate.js';
 
 const pictures = generatePhotosData();
 generateThumbs(pictures);
 
-const picturesItems = document.querySelectorAll('.picture');
-for (const pictureItem of picturesItems) {
-  const pictureId = pictureItem.querySelector('.picture__img').dataset.id;
-  const pictureData = pictures.find((picture) => picture.id === Number(pictureId));
-  pictureItem.addEventListener('click', getGallery(pictureData));
-}
+const picturesContainer = document.querySelector('.pictures');
+picturesContainer.addEventListener('click', (event) => {
+  if (event.target.matches('.picture__img')) {
+    event.preventDefault();
+    const pictureId = event.target.dataset.id;
+    const pictureData = pictures.find((picture) => picture.id === Number(pictureId));
+    openBigPicture(pictureData);
+  }
+});
+
+const uploadFormFileInput = document.querySelector('#upload-file');
+uploadFormFileInput.addEventListener('change', () => {
+  openUploadForm();
+});
