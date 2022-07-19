@@ -36,6 +36,7 @@ pristine.addValidator(
 );
 
 uploadForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  pristine.validate();
+  if (!pristine.validate()) {
+    event.preventDefault();
+  }
 });

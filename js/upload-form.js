@@ -15,6 +15,7 @@ const openUploadForm = () => {
     uploadOverlay.classList.add('hidden');
     body.classList.remove('modal-open');
     document.removeEventListener('keydown', onPopupEscKeydown);
+    uploadForm.reset();
   };
 
   uploadFormClose.addEventListener('click', () => {
