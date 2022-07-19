@@ -6,7 +6,7 @@ import {
 } from './thumbs.js';
 import {
   openBigPicture
-} from './gallery.js';
+} from './big-picture.js';
 import {
   openUploadForm
 } from './upload-form.js';
