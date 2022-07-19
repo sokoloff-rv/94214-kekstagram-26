@@ -62,24 +62,9 @@ const commentsAuthorsNames = [
   'Малонемножков Константин Вениаминович'
 ];
 
-const idForComments = [];
-
-const createIdForComments = () => {
-  const idForCommentsLength = idForComments.length;
-  let id;
-  while (idForComments.length === idForCommentsLength) {
-    id = getRandomNumber(1, 75); // 75 - максимально возможное число комментариев в текущих условиях, так как в каждом из 25 постов может быть максимум 3 комментария
-    if (idForComments.includes(id)) {
-      continue;
-    }
-    idForComments.push(id);
-  }
-  return id;
-};
-
 const getCommentMessage = (quantity) => {
   let commentMessage = '';
-  const tempCommentsMessages = commentsMessages.slice(0); // создаю копию массива с предложениями, так как в цикле буду удалять из неё использованные предложения во избежание дублирования
+  const tempCommentsMessages = commentsMessages.slice(0);
   for (let i = 0; i < quantity; i++) {
     commentMessage += tempCommentsMessages[getRandomNumber(0, tempCommentsMessages.length - 1)];
     const commentMessageIndex = tempCommentsMessages.indexOf(commentMessage);
@@ -88,6 +73,9 @@ const getCommentMessage = (quantity) => {
   }
   return commentMessage;
 };
+
+let commentId = 1;
+const createIdForComments = () => commentId++;
 
 const getComments = (quantity) => {
   const comments = [];
@@ -110,7 +98,7 @@ const generatePhotosData = () => {
       url: `photos/${i + 1}.jpg`,
       description: photosDescriptions[i],
       likes: getRandomNumber(15, 200),
-      comments: getComments(getRandomNumber(1, 3))
+      comments: getComments(getRandomNumber(4, 12))
     };
   }
   return photosData;
