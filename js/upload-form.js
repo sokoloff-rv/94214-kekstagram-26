@@ -3,7 +3,8 @@ import {
 } from './upload-form-validate.js';
 import {
   zoomIn,
-  zoomOut
+  zoomOut,
+  applyEffect
 } from './edit-picture.js';
 
 const body = document.querySelector('body');
@@ -15,6 +16,7 @@ const uploadFormHashtag = uploadForm.querySelector('.text__hashtags');
 const uploadFormComment = uploadForm.querySelector('.text__description');
 const scaleSmaller = uploadForm.querySelector('.scale__control--smaller');
 const scaleBigger = uploadForm.querySelector('.scale__control--bigger');
+const effectsList = uploadForm.querySelector('.effects__list');
 
 const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
@@ -24,6 +26,7 @@ const openUploadForm = () => {
   uploadForm.addEventListener('submit', onUploadFormSubmit);
   scaleSmaller.addEventListener('click', zoomIn);
   scaleBigger.addEventListener('click', zoomOut);
+  effectsList.addEventListener('change', applyEffect);
 };
 
 function closeUploadForm() {
@@ -33,7 +36,8 @@ function closeUploadForm() {
   uploadFormClose.removeEventListener('click', closeUploadForm);
   uploadForm.removeEventListener('submit', onUploadFormSubmit);
   scaleSmaller.removeEventListener('click', zoomIn);
-  scaleBigger.addEventListener('click', zoomOut);
+  scaleBigger.removeEventListener('click', zoomOut);
+  effectsList.removeEventListener('change', applyEffect);
   uploadForm.reset();
 }
 
