@@ -1,3 +1,7 @@
+import {
+  onUploadFormSubmit
+} from './upload-form-validate.js';
+
 const body = document.querySelector('body');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadForm = document.querySelector('#upload-select-image');
@@ -9,16 +13,18 @@ const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
+  uploadFormClose.addEventListener('click', closeUploadForm);
+  uploadForm.addEventListener('submit', onUploadFormSubmit);
 };
 
-const closeUploadForm = () => {
+function closeUploadForm() {
   uploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onPopupEscKeydown);
+  uploadFormClose.removeEventListener('click', closeUploadForm);
+  uploadForm.removeEventListener('submit', onUploadFormSubmit);
   uploadForm.reset();
-};
-
-uploadFormClose.addEventListener('click', closeUploadForm);
+}
 
 function onPopupEscKeydown(event) {
   if (event.key === 'Escape' && ![uploadFormComment, uploadFormHashtag].includes(document.activeElement)) {

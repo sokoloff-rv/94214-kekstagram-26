@@ -10,7 +10,6 @@ import {
 import {
   openUploadForm
 } from './upload-form.js';
-import './upload-form-validate.js';
 
 const PICTURES = generatePhotosData();
 generateThumbs(PICTURES);
