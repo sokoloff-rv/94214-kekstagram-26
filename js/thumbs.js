@@ -1,6 +1,6 @@
 import {
   data
-} from './data.js';
+} from './demo-data.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const picturesTemplate = document.querySelector('#picture').content;
