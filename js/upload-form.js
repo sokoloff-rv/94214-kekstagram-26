@@ -1,6 +1,10 @@
 import {
   onUploadFormSubmit
 } from './upload-form-validate.js';
+import {
+  zoomIn,
+  zoomOut
+} from './edit-picture.js';
 
 const body = document.querySelector('body');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
@@ -9,6 +13,8 @@ const uploadFormFileInput = uploadForm.querySelector('#upload-file');
 const uploadFormClose = uploadForm.querySelector('#upload-cancel');
 const uploadFormHashtag = uploadForm.querySelector('.text__hashtags');
 const uploadFormComment = uploadForm.querySelector('.text__description');
+const scaleSmaller = uploadForm.querySelector('.scale__control--smaller');
+const scaleBigger = uploadForm.querySelector('.scale__control--bigger');
 
 const openUploadForm = () => {
   uploadOverlay.classList.remove('hidden');
@@ -16,6 +22,8 @@ const openUploadForm = () => {
   document.addEventListener('keydown', onPopupEscKeydown);
   uploadFormClose.addEventListener('click', closeUploadForm);
   uploadForm.addEventListener('submit', onUploadFormSubmit);
+  scaleSmaller.addEventListener('click', zoomIn);
+  scaleBigger.addEventListener('click', zoomOut);
 };
 
 function closeUploadForm() {
@@ -24,6 +32,8 @@ function closeUploadForm() {
   document.removeEventListener('keydown', onPopupEscKeydown);
   uploadFormClose.removeEventListener('click', closeUploadForm);
   uploadForm.removeEventListener('submit', onUploadFormSubmit);
+  scaleSmaller.removeEventListener('click', zoomIn);
+  scaleBigger.addEventListener('click', zoomOut);
   uploadForm.reset();
 }
 
