@@ -35,8 +35,12 @@ pristine.addValidator(
   'Некорректный формат. Хэштег должен начинаться с символа #, не содержать пробелы и спецсимволы, длина хэштега должна быть от 2 до 20 символов. Не более 5 хэштегов, разделенных пробелом.'
 );
 
-uploadForm.addEventListener('submit', (event) => {
+const onUploadFormSubmit = (event) => {
   if (!pristine.validate()) {
     event.preventDefault();
   }
-});
+};
+
+export {
+  onUploadFormSubmit
+};

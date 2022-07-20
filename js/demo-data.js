@@ -109,6 +109,8 @@ const generatePhotosData = () => {
   return photosData;
 };
 
+const data = generatePhotosData();
+
 export {
-  generatePhotosData
+  data
 };
