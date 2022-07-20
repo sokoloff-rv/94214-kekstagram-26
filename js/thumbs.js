@@ -1,3 +1,7 @@
+import {
+  data
+} from './data.js';
+
 const picturesContainer = document.querySelector('.pictures');
 const picturesTemplate = document.querySelector('#picture').content;
 const picturesFragment = document.createDocumentFragment();
@@ -14,6 +18,4 @@ const generateThumbs = (pictures) => {
   picturesContainer.append(picturesFragment);
 };
 
-export {
-  generateThumbs
-};
+generateThumbs(data);

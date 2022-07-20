@@ -5,6 +5,7 @@ import {
 const body = document.querySelector('body');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadForm = document.querySelector('#upload-select-image');
+const uploadFormFileInput = uploadForm.querySelector('#upload-file');
 const uploadFormClose = uploadForm.querySelector('#upload-cancel');
 const uploadFormHashtag = uploadForm.querySelector('.text__hashtags');
 const uploadFormComment = uploadForm.querySelector('.text__description');
@@ -32,6 +33,6 @@ function onPopupEscKeydown(event) {
   }
 }
 
-export {
-  openUploadForm
-};
+uploadFormFileInput.addEventListener('change', () => {
+  openUploadForm();
+});

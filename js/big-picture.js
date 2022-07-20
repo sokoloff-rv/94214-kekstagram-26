@@ -1,4 +1,9 @@
+import {
+  data
+} from './data.js';
+
 const body = document.querySelector('body');
+const picturesContainer = document.querySelector('.pictures');
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImage = document.querySelector('.big-picture__img img');
 const bigPictureLikes = document.querySelector('.big-picture .likes-count');
@@ -8,6 +13,15 @@ const bigPictureClose = document.querySelector('.big-picture__cancel');
 const bigPictureAllComments = document.querySelector('.big-picture .comments-count');
 const bigPictureVisibleComments = document.querySelector('.big-picture .visible-comments');
 const bigPictureCommentsLoaderButton = document.querySelector('.big-picture .comments-loader');
+
+picturesContainer.addEventListener('click', (event) => {
+  if (event.target.matches('.picture__img')) {
+    event.preventDefault();
+    const pictureId = event.target.dataset.id;
+    const pictureData = data.find((picture) => picture.id === Number(pictureId));
+    openBigPicture(pictureData);
+  }
+});
 
 const openBigPicture = (pictureData) => {
   bigPicture.classList.remove('hidden');
@@ -72,8 +86,4 @@ const openBigPicture = (pictureData) => {
       closeBigPicture();
     }
   }
-};
-
-export {
-  openBigPicture
 };
