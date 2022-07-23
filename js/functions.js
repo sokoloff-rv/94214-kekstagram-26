@@ -31,12 +31,16 @@ const checkLength = (text, maxLength) => {
   return text.length <= maxLength;
 };
 
+/**
+ * Выводит сообщение об ошибке на 5 секунд
+ *
+ * @param {errorText} text - Текст ошибки
+ */
 const showError = (errorText) => {
   const errorContainer = document.createElement('div');
   errorContainer.classList.add('error-notice');
   errorContainer.textContent = errorText;
   document.body.append(errorContainer);
-
   setTimeout(() => {
     errorContainer.remove();
   }, 5000);
