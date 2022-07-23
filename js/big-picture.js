@@ -1,6 +1,6 @@
 import {
-  data
-} from './demo-data.js';
+  getData
+} from './api.js';
 
 const body = document.querySelector('body');
 const picturesContainer = document.querySelector('.pictures');
@@ -86,12 +86,14 @@ function onPopupEscKeydown(event) {
   }
 }
 
-picturesContainer.addEventListener('click', (event) => {
-  if (event.target.matches('.picture__img')) {
-    event.preventDefault();
-    const pictureId = event.target.dataset.id;
-    pictureData = data.find((picture) => picture.id === Number(pictureId));
-    dataComments = pictureData.comments;
-    openBigPicture();
-  }
+getData((posts) => {
+  picturesContainer.addEventListener('click', (event) => {
+    if (event.target.matches('.picture__img')) {
+      event.preventDefault();
+      const pictureId = event.target.dataset.id;
+      pictureData = posts.find((picture) => picture.id === Number(pictureId));
+      dataComments = pictureData.comments;
+      openBigPicture();
+    }
+  });
 });
