@@ -1,16 +1,16 @@
 import {
-  generateThumbs
-} from './thumbs.js';
-import {
-  renderBigPicture
-} from './big-picture.js';
-import './upload-form.js';
-import {
   getData
 } from './api.js';
 import {
   showError
 } from './functions.js';
+import {
+  generateThumbs
+} from './thumbs.js';
+import {
+  renderBigPicture
+} from './big-picture.js';
+import './upload-form-toggle.js';
 
 getData(
   (posts) => {

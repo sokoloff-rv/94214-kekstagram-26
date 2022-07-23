@@ -9,6 +9,27 @@ const getData = (onSuccess, onFail) => {
     });
 };
 
+const sendData = (onSuccess, onFail, body) => {
+  fetch(
+    'https://26.javascript.pages.academy/kekstagram',
+    {
+      method: 'POST',
+      body,
+    },
+  )
+    .then((response) => {
+      if (response.ok) {
+        onSuccess();
+      } else {
+        onFail('Ошибка сервера. Не удалось отправить данные!');
+      }
+    })
+    .catch(() => {
+      onFail('Ошибка сервера. Не удалось отправить данные!');
+    });
+};
+
 export {
-  getData
+  getData,
+  sendData
 };

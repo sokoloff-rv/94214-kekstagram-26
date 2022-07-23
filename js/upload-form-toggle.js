@@ -1,6 +1,6 @@
 import {
   onUploadFormSubmit
-} from './upload-form-validate.js';
+} from './upload-form-sender.js';
 import {
   zoomIn,
   zoomOut,
@@ -50,3 +50,7 @@ function onPopupEscKeydown(event) {
 uploadFormFileInput.addEventListener('change', () => {
   openUploadForm();
 });
+
+export {
+  closeUploadForm
+};

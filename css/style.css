@@ -1373,4 +1373,5 @@ input+.error-text {
   text-align: center;
   text-transform: none;
   font-size: large;
+  z-index: 2;
 }

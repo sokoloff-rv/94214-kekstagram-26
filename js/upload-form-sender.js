@@ -1,5 +1,22 @@
+import {
+  sendData
+} from './api.js';
+import {
+  showError
+} from './functions.js';
+import {
+  closeUploadForm
+} from './upload-form-toggle.js';
+import {
+  showSuccessMessage
+} from './upload-form-success.js';
+import {
+  showFailMessage
+} from './upload-form-fail.js';
+
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadFormHashtag = uploadForm.querySelector('.text__hashtags');
+const uploadFormButton = uploadForm.querySelector('.img-upload__submit');
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -35,9 +52,35 @@ pristine.addValidator(
   'Некорректный формат. Хэштег должен начинаться с символа #, не содержать пробелы и спецсимволы, длина хэштега должна быть от 2 до 20 символов. Не более 5 хэштегов, разделенных пробелом.'
 );
 
+const blockFormButton = () => {
+  uploadFormButton.disabled = false;
+  uploadFormButton.textContent = 'Идет публикация...';
+};
+
+const unblockFormButton = () => {
+  uploadFormButton.disabled = false;
+  uploadFormButton.textContent = 'Опубликовать';
+};
+
 const onUploadFormSubmit = (event) => {
-  if (!pristine.validate()) {
-    event.preventDefault();
+  event.preventDefault();
+  if (pristine.validate()) {
+    blockFormButton();
+    sendData(
+      () => {
+        showSuccessMessage();
+        unblockFormButton();
+        closeUploadForm();
+        uploadForm.reset();
+      },
+      (errorText) => {
+        showFailMessage(errorText);
+        unblockFormButton();
+      },
+      new FormData(event.target),
+    );
+  } else {
+    showError('Форма заполнена некорректно!');
   }
 };
 
