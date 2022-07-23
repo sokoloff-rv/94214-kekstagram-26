@@ -8,11 +8,8 @@ import {
   closeUploadForm
 } from './upload-form-toggle.js';
 import {
-  showSuccessMessage
-} from './upload-form-success.js';
-import {
-  showErrorMessage
-} from './upload-form-fail.js';
+  showResultMessage
+} from './upload-form-result.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadFormHashtag = uploadForm.querySelector('.text__hashtags');
@@ -68,13 +65,13 @@ const onUploadFormSubmit = (event) => {
     disableFormButton();
     sendData(
       () => {
-        showSuccessMessage();
+        showResultMessage('success');
         enableFormButton();
         closeUploadForm();
         uploadForm.reset();
       },
-      (errorText) => {
-        showErrorMessage(errorText);
+      () => {
+        showResultMessage('error');
         enableFormButton();
       },
       new FormData(event.target),
