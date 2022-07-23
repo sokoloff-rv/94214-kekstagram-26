@@ -1351,7 +1351,7 @@ main {
   display: none;
 }
 
-/* Дополнительный стиили */
+/* Дополнительный стили */
 
 .error-text {
   color: red;
@@ -1361,4 +1361,16 @@ main {
 input+.error-text {
   margin-top: -15px;
   margin-bottom: 15px;
+}
+
+.error-notice {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: red;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  text-transform: none;
+  font-size: large;
 }

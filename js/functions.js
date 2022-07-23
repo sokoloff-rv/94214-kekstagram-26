@@ -31,7 +31,19 @@ const checkLength = (text, maxLength) => {
   return text.length <= maxLength;
 };
 
+const showError = (errorText) => {
+  const errorContainer = document.createElement('div');
+  errorContainer.classList.add('error-notice');
+  errorContainer.textContent = errorText;
+  document.body.append(errorContainer);
+
+  setTimeout(() => {
+    errorContainer.remove();
+  }, 5000);
+};
+
 export {
   getRandomNumber,
-  checkLength
+  checkLength,
+  showError
 };

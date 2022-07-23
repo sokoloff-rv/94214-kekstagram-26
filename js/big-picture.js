@@ -1,9 +1,4 @@
-import {
-  getData
-} from './api.js';
-
 const body = document.querySelector('body');
-const picturesContainer = document.querySelector('.pictures');
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImage = document.querySelector('.big-picture__img img');
 const bigPictureLikes = document.querySelector('.big-picture .likes-count');
@@ -86,14 +81,16 @@ function onPopupEscKeydown(event) {
   }
 }
 
-getData((posts) => {
-  picturesContainer.addEventListener('click', (event) => {
-    if (event.target.matches('.picture__img')) {
-      event.preventDefault();
-      const pictureId = event.target.dataset.id;
-      pictureData = posts.find((picture) => picture.id === Number(pictureId));
-      dataComments = pictureData.comments;
-      openBigPicture();
-    }
-  });
-});
+const renderBigPicture = (posts) => (event) => {
+  if (event.target.matches('.picture__img')) {
+    event.preventDefault();
+    const pictureId = event.target.dataset.id;
+    pictureData = posts.find((picture) => picture.id === Number(pictureId));
+    dataComments = pictureData.comments;
+    openBigPicture();
+  }
+};
+
+export {
+  renderBigPicture
+};

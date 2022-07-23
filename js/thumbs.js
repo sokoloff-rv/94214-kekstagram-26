@@ -1,7 +1,3 @@
-import {
-  getData
-} from './api.js';
-
 const picturesContainer = document.querySelector('.pictures');
 const picturesTemplate = document.querySelector('#picture').content;
 const picturesFragment = document.createDocumentFragment();
@@ -18,6 +14,6 @@ const generateThumbs = (pictures) => {
   picturesContainer.append(picturesFragment);
 };
 
-getData((posts) => {
-  generateThumbs(posts);
-});
+export {
+  generateThumbs
+};
