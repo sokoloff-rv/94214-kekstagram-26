@@ -11,7 +11,7 @@ import {
   showSuccessMessage
 } from './upload-form-success.js';
 import {
-  showFailMessage
+  showErrorMessage
 } from './upload-form-fail.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
@@ -52,12 +52,12 @@ pristine.addValidator(
   'Некорректный формат. Хэштег должен начинаться с символа #, не содержать пробелы и спецсимволы, длина хэштега должна быть от 2 до 20 символов. Не более 5 хэштегов, разделенных пробелом.'
 );
 
-const blockFormButton = () => {
+const disableFormButton = () => {
   uploadFormButton.disabled = false;
   uploadFormButton.textContent = 'Идет публикация...';
 };
 
-const unblockFormButton = () => {
+const enableFormButton = () => {
   uploadFormButton.disabled = false;
   uploadFormButton.textContent = 'Опубликовать';
 };
@@ -65,17 +65,17 @@ const unblockFormButton = () => {
 const onUploadFormSubmit = (event) => {
   event.preventDefault();
   if (pristine.validate()) {
-    blockFormButton();
+    disableFormButton();
     sendData(
       () => {
         showSuccessMessage();
-        unblockFormButton();
+        enableFormButton();
         closeUploadForm();
         uploadForm.reset();
       },
       (errorText) => {
-        showFailMessage(errorText);
-        unblockFormButton();
+        showErrorMessage(errorText);
+        enableFormButton();
       },
       new FormData(event.target),
     );

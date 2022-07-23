@@ -42,7 +42,7 @@ function closeUploadForm() {
 }
 
 function onPopupEscKeydown(event) {
-  if (event.key === 'Escape' && ![uploadFormComment, uploadFormHashtag].includes(document.activeElement)) {
+  if (event.key === 'Escape' && ![uploadFormComment, uploadFormHashtag].includes(document.activeElement) && !document.includes('.error')) {
     closeUploadForm();
   }
 }
