@@ -1,9 +1,4 @@
-import {
-  data
-} from './demo-data.js';
-
 const body = document.querySelector('body');
-const picturesContainer = document.querySelector('.pictures');
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImage = document.querySelector('.big-picture__img img');
 const bigPictureLikes = document.querySelector('.big-picture .likes-count');
@@ -86,12 +81,16 @@ function onPopupEscKeydown(event) {
   }
 }
 
-picturesContainer.addEventListener('click', (event) => {
+const renderBigPicture = (posts) => (event) => {
   if (event.target.matches('.picture__img')) {
     event.preventDefault();
     const pictureId = event.target.dataset.id;
-    pictureData = data.find((picture) => picture.id === Number(pictureId));
+    pictureData = posts.find((picture) => picture.id === Number(pictureId));
     dataComments = pictureData.comments;
     openBigPicture();
   }
-});
+};
+
+export {
+  renderBigPicture
+};

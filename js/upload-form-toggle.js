@@ -1,10 +1,11 @@
 import {
   onUploadFormSubmit
-} from './upload-form-validate.js';
+} from './upload-form-sender.js';
 import {
   zoomIn,
   zoomOut,
-  applyEffect
+  applyEffect,
+  resetEffect
 } from './edit-picture.js';
 
 const body = document.querySelector('body');
@@ -39,10 +40,11 @@ function closeUploadForm() {
   scaleBigger.removeEventListener('click', zoomOut);
   effectsList.removeEventListener('change', applyEffect);
   uploadForm.reset();
+  resetEffect();
 }
 
 function onPopupEscKeydown(event) {
-  if (event.key === 'Escape' && ![uploadFormComment, uploadFormHashtag].includes(document.activeElement)) {
+  if (event.key === 'Escape' && ![uploadFormComment, uploadFormHashtag].includes(document.activeElement) && !document.includes('.error')) {
     closeUploadForm();
   }
 }
@@ -50,3 +52,7 @@ function onPopupEscKeydown(event) {
 uploadFormFileInput.addEventListener('change', () => {
   openUploadForm();
 });
+
+export {
+  closeUploadForm
+};

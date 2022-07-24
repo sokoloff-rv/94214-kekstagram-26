@@ -1,7 +1,3 @@
-import {
-  data
-} from './demo-data.js';
-
 const picturesContainer = document.querySelector('.pictures');
 const picturesTemplate = document.querySelector('#picture').content;
 const picturesFragment = document.createDocumentFragment();
@@ -18,4 +14,6 @@ const generateThumbs = (pictures) => {
   picturesContainer.append(picturesFragment);
 };
 
-generateThumbs(data);
+export {
+  generateThumbs
+};
