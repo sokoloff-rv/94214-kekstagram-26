@@ -1,6 +1,10 @@
 import {
   generateThumbs
 } from './thumbs.js';
+import {
+  debounce
+} from './functions.js';
+
 
 const filterButtonsElements = document.querySelectorAll('.img-filters__button');
 const filterDefaultElement = document.querySelector('#filter-default');
@@ -8,6 +12,7 @@ const filterRandomElement = document.querySelector('#filter-random');
 const filterDiscussedElement = document.querySelector('#filter-discussed');
 
 const NUMBER_OF_RANDOM_PHOTOS = 10;
+const DELAY = 500;
 
 let filterData = '';
 
@@ -51,9 +56,9 @@ const getFilterData = (posts) => {
   filterData = posts;
 };
 
-filterDiscussedElement.addEventListener('click', viewDiscussedPhotos);
-filterDefaultElement.addEventListener('click', viewDefaultPhotos);
-filterRandomElement.addEventListener('click', viewRandomPhotos);
+filterDiscussedElement.addEventListener('click', debounce(viewDiscussedPhotos, DELAY));
+filterDefaultElement.addEventListener('click', debounce(viewDefaultPhotos, DELAY));
+filterRandomElement.addEventListener('click', debounce(viewRandomPhotos, DELAY));
 
 export {
   getFilterData
