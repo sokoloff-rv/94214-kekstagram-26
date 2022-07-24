@@ -5,7 +5,6 @@ import {
   debounce
 } from './functions.js';
 
-
 const filterButtonsElements = document.querySelectorAll('.img-filters__button');
 const filterDefaultElement = document.querySelector('#filter-default');
 const filterRandomElement = document.querySelector('#filter-random');
