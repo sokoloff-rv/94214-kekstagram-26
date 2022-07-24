@@ -55,9 +55,9 @@ const getFilterData = (posts) => {
   filterData = posts;
 };
 
-filterDiscussedElement.addEventListener('click', debounce(viewDiscussedPhotos, DELAY));
 filterDefaultElement.addEventListener('click', debounce(viewDefaultPhotos, DELAY));
 filterRandomElement.addEventListener('click', debounce(viewRandomPhotos, DELAY));
+filterDiscussedElement.addEventListener('click', debounce(viewDiscussedPhotos, DELAY));
 
 export {
   getFilterData
