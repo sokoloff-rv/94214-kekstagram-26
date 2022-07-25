@@ -2,10 +2,13 @@ import {
   getData
 } from './api.js';
 import {
-  getFilterData
+  viewDefaultPhotos,
+  viewRandomPhotos,
+  viewDiscussedPhotos
 } from './filter.js';
 import {
-  showError
+  showError,
+  debounce
 } from './functions.js';
 import {
   generateThumbs
@@ -17,13 +20,20 @@ import './upload-form-toggle.js';
 
 const filterElement = document.querySelector('.img-filters');
 const picturesElement = document.querySelector('.pictures');
+const filterDefaultElement = document.querySelector('#filter-default');
+const filterRandomElement = document.querySelector('#filter-random');
+const filterDiscussedElement = document.querySelector('#filter-discussed');
+
+const DELAY = 500;
 
 getData(
   (posts) => {
     generateThumbs(posts);
-    getFilterData(posts);
     filterElement.classList.remove('img-filters--inactive');
     picturesElement.addEventListener('click', renderBigPicture(posts));
+    filterDefaultElement.addEventListener('click', debounce(viewDefaultPhotos(posts), DELAY));
+    filterRandomElement.addEventListener('click', debounce(viewRandomPhotos(posts), DELAY));
+    filterDiscussedElement.addEventListener('click', debounce(viewDiscussedPhotos(posts), DELAY));
   },
   (errorText) => {
     showError(errorText);
