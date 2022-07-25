@@ -45,8 +45,16 @@ const viewDiscussedPhotos = (photos) => {
   generateThumbs(discussedPhotos);
 };
 
+const onFilterButtonsClick = (photos) => (event) => {
+  if (event.target.matches('#filter-default')) {
+    viewDefaultPhotos(photos);
+  } else if (event.target.matches('#filter-random')) {
+    viewRandomPhotos(photos);
+  } else if (event.target.matches('#filter-discussed')) {
+    viewDiscussedPhotos(photos);
+  }
+};
+
 export {
-  viewDefaultPhotos,
-  viewRandomPhotos,
-  viewDiscussedPhotos
+  onFilterButtonsClick
 };
