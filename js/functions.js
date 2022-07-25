@@ -34,7 +34,7 @@ const checkLength = (text, maxLength) => {
 /**
  * Выводит сообщение об ошибке на 5 секунд
  *
- * @param {errorText} text - Текст ошибки
+ * @param {string} text - Текст ошибки
  */
 const showError = (errorText) => {
   const errorContainer = document.createElement('div');
@@ -46,8 +46,25 @@ const showError = (errorText) => {
   }, 5000);
 };
 
+/**
+ * Устранение дребезга
+ *
+ * @param {string} callback - Функция-колбэк
+ * @param {string} timeoutDelay - Время в миллисекундах
+ *
+ * @return {any} результат выполнения функции-колбэка с устранением дребезга
+ */
+function debounce (callback, timeoutDelay = 500) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
 export {
   getRandomNumber,
   checkLength,
-  showError
+  showError,
+  debounce
 };
