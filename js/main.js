@@ -25,8 +25,8 @@ getData(
   (posts) => {
     generateThumbs(posts);
     filterElement.classList.remove('img-filters--inactive');
-    picturesElement.addEventListener('click', renderBigPicture(posts));
     filterElement.addEventListener('click', debounce(onFilterButtonsClick(posts), DELAY));
+    picturesElement.addEventListener('click', renderBigPicture(posts));
   },
   (errorText) => {
     showError(errorText);
