@@ -50,7 +50,7 @@ pristine.addValidator(
 );
 
 const disableFormButton = () => {
-  uploadFormButton.disabled = false;
+  uploadFormButton.disabled = true;
   uploadFormButton.textContent = 'Идет публикация...';
 };
 
