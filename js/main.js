@@ -2,15 +2,15 @@ import {
   getData
 } from './api.js';
 import {
-  onFilterButtonsClick
-} from './filter.js';
-import {
   showError,
   debounce
 } from './functions.js';
 import {
   generateThumbs
 } from './thumbs.js';
+import {
+  onFilterButtonsClick
+} from './filter.js';
 import {
   renderBigPicture
 } from './big-picture.js';
