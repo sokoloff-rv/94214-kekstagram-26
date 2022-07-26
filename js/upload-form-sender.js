@@ -59,8 +59,8 @@ const enableFormButton = () => {
   uploadFormButton.textContent = 'Опубликовать';
 };
 
-const onUploadFormSubmit = (event) => {
-  event.preventDefault();
+const onUploadFormSubmit = (evt) => {
+  evt.preventDefault();
   if (pristine.validate()) {
     disableFormButton();
     sendData(
@@ -74,7 +74,7 @@ const onUploadFormSubmit = (event) => {
         showResultMessage('error');
         enableFormButton();
       },
-      new FormData(event.target),
+      new FormData(evt.target),
     );
   } else {
     showError('Форма заполнена некорректно!');

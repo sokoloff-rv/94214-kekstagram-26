@@ -12,7 +12,7 @@ const bigPictureCommentsLoaderButton = document.querySelector('.big-picture .com
 const NUMBER_OF_VISIBLE_COMMENTS = 5;
 
 let startCommentsIndex = 0;
-let pictureData = [];
+let dataPictures = [];
 let dataComments = [];
 
 const renderVisibleComments = (visibleComments) => {
@@ -48,9 +48,9 @@ const getComments = () => {
 };
 
 const renderBigPictureData = () => {
-  bigPictureImage.src = pictureData.url;
-  bigPictureLikes.textContent = pictureData.likes;
-  bigPictureDescription.textContent = pictureData.description;
+  bigPictureImage.src = dataPictures.url;
+  bigPictureLikes.textContent = dataPictures.likes;
+  bigPictureDescription.textContent = dataPictures.description;
   bigPictureComments.innerHTML = '';
   bigPictureCommentsLoaderButton.classList.remove('hidden');
   bigPictureAllComments.textContent = dataComments.length;
@@ -75,18 +75,18 @@ function closeBigPicture() {
   startCommentsIndex = 0;
 }
 
-function onPopupEscKeydown(event) {
-  if (event.key === 'Escape') {
+function onPopupEscKeydown(evt) {
+  if (evt.key === 'Escape') {
     closeBigPicture();
   }
 }
 
-const renderBigPicture = (posts) => (event) => {
-  if (event.target.matches('.picture__img')) {
-    event.preventDefault();
-    const pictureId = event.target.dataset.id;
-    pictureData = posts.find((picture) => picture.id === Number(pictureId));
-    dataComments = pictureData.comments;
+const renderBigPicture = (posts) => (evt) => {
+  if (evt.target.matches('.picture__img')) {
+    evt.preventDefault();
+    const pictureId = evt.target.dataset.id;
+    dataPictures = posts.find((picture) => picture.id === Number(pictureId));
+    dataComments = dataPictures.comments;
     openBigPicture();
   }
 };

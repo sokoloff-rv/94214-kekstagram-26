@@ -83,15 +83,15 @@ noUiSlider.create(sliderElement, {
   connect: 'lower',
 });
 
-const applyEffect = (event) => {
+const applyEffect = (evt) => {
   imageElement.removeAttribute('class');
   imageElement.removeAttribute('style');
   if (scale) {
     imageElement.setAttribute('style', `transform: ${scale};`);
   }
-  if (!event.target.matches('#effect-none')) {
+  if (!evt.target.matches('#effect-none')) {
     sliderContainer.classList.remove('hidden');
-    const effectClass = `effects__preview--${event.target.value}`;
+    const effectClass = `effects__preview--${evt.target.value}`;
     imageElement.classList.add(effectClass);
     const activeEffect = effectsList.querySelector('[type="radio"]:checked').value;
     const effect = EFFECTS[activeEffect];
