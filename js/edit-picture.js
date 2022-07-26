@@ -105,11 +105,8 @@ const applyEffect = (event) => {
     });
     effectLevelInputElement.value = effect.max;
   } else {
-    imageElement.removeAttribute('style');
     sliderContainer.classList.add('hidden');
     effectLevelInputElement.value = '';
-    scaleInputElement.value = '100%';
-    scale = '';
   }
 };
 
@@ -134,9 +131,9 @@ const changeEffect = () => {
 
 const resetEffect = () => {
   imageElement.removeAttribute('class');
-  imageElement.removeAttribute('style');
   sliderContainer.classList.add('hidden');
   effectLevelInputElement.value = '';
+  imageElement.removeAttribute('style');
   scaleInputElement.value = '100%';
   scale = '';
 };
