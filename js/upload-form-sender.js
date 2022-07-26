@@ -12,7 +12,7 @@ import {
 } from './upload-form-result.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
-const uploadFormHashtag = uploadForm.querySelector('.text__hashtags');
+const uploadFormHashtagInput = uploadForm.querySelector('.text__hashtags');
 const uploadFormButton = uploadForm.querySelector('.img-upload__submit');
 
 const pristine = new Pristine(uploadForm, {
@@ -44,7 +44,7 @@ const validationHashtag = (value) => {
 };
 
 pristine.addValidator(
-  uploadFormHashtag,
+  uploadFormHashtagInput,
   validationHashtag,
   'Некорректный формат. Хэштег должен начинаться с символа #, не содержать пробелы и спецсимволы, длина хэштега должна быть от 2 до 20 символов. Не более 5 хэштегов, разделенных пробелом.'
 );
