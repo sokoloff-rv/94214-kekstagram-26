@@ -7,7 +7,7 @@ const filterDefaultButton = document.querySelector('#filter-default');
 const filterRandomButton = document.querySelector('#filter-random');
 const filterDiscussedButton = document.querySelector('#filter-discussed');
 
-const NUMBER_OF_RANDOM_PHOTOS = 10;
+const NUMBER_OF_RANDOM_PHOTOS = 12;
 
 const clearThumbs = () => {
   const pictures = document.querySelectorAll('.picture');
