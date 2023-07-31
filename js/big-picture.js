@@ -64,7 +64,13 @@ const openBigPicture = () => {
   document.addEventListener('keydown', onPopupEscKeydown);
   bigPictureLoaderButton.addEventListener('click', getComments);
   bigPictureCloseButton.addEventListener('click', closeBigPicture);
+  bigPictureLikesElement.addEventListener('click', addLike);
 };
+
+function addLike() {
+  this.textContent = parseInt(this.textContent, 10) + 1;
+  this.classList.add('likes-count--active');
+}
 
 function closeBigPicture() {
   bigPictureElement.classList.add('hidden');
@@ -73,6 +79,7 @@ function closeBigPicture() {
   bigPictureLoaderButton.removeEventListener('click', getComments);
   bigPictureCloseButton.removeEventListener('click', closeBigPicture);
   startCommentsIndex = 0;
+  bigPictureLikesElement.classList.remove('likes-count--active');
 }
 
 function onPopupEscKeydown(evt) {
