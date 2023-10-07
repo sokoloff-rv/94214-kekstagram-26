@@ -48,7 +48,7 @@
 1. Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/sokoloff-rv/94214-kekstagram-26.git kekstagram
+git clone https://github.com/sokoloff-rv/kekstagram.git kekstagram
 ```
 
 2. Перейдите в директорию проекта:
